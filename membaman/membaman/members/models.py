@@ -33,7 +33,7 @@ class SubOrganisation(models.Model):
         ordering = ['sub_name']
 
     sub_name = models.CharField(max_length=50)
-    organisation = models.ForeignKey(Organisation)
+    organisation = models.ForeignKey(Organisation, on_delete=models.PROTECT)
 
     def organisation_name(self):
         return self.organisation.name
@@ -91,7 +91,7 @@ class Caregiver(Person):
         (OTHER, 'Other'),
     )
 
-    family = models.ForeignKey(Family)
+    family = models.ForeignKey(Family, on_delete=models.PROTECT)
     phone_mobile = models.CharField(max_length=20)
     email = models.CharField(max_length=50)
     relationship = models.CharField(max_length=2,
@@ -120,13 +120,13 @@ class Member(Person):
         (VENTURER, 'Venturer'),
         (UNKNOWN, 'Unknown'),
     )
-    organisation = models.ForeignKey(Organisation)
-    sub_organisation = models.ForeignKey(SubOrganisation)
+    organisation = models.ForeignKey(Organisation, on_delete=models.PROTECT)
+    sub_organisation = models.ForeignKey(SubOrganisation, on_delete=models.PROTECT)
     membership_type = models.CharField(max_length=2,
                                        choices=MEMBERSHIP_TYPE_CHOICES,
                                        default=UNKNOWN)
-    family = models.ForeignKey(Family)
-    primary_caregiver = models.ForeignKey(Caregiver, related_name='primary_caregiver')
+    family = models.ForeignKey(Family, on_delete=models.PROTECT)
+    primary_caregiver = models.ForeignKey(Caregiver, on_delete=models.PROTECT, related_name='primary_caregiver')
     caregivers = models.ManyToManyField(Caregiver, related_name='caregivers')
     date_of_birth = models.DateField(null=True, blank=True)
     date_invested = models.DateField(null=True, blank=True)
