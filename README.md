@@ -23,7 +23,7 @@ Membaman is implemented in Django 3.2 and uses a sqlite database as a data repos
 
 Environment Variables
 -------------------
-Using `direnv` to set a ENV VAR for the SECRET_KEY value when we cd into membaman. Longer term need a better solution.
+Using `direnv` to set a ENV VAR called `MM_V2_SECRET_KEY` to hold the `SECRET_KEY` value when we cd into membaman. Longer term need a better solution.
 
 Running Instructions
 -------------------
