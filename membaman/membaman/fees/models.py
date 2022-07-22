@@ -21,6 +21,10 @@ class Year(models.Model):
     def __unicode__(self):
         return unicode(self.name) + unicode(' (') + unicode(self.organisation.name) + unicode(')')
 
+    def __str__(self):
+        return "{} ({})".format(self.name, self.organisation.name)
+
+
 class SubYear(models.Model):
     '''
     A fraction of the `Year` model
@@ -53,6 +57,9 @@ class SubYear(models.Model):
 
     def __unicode__(self):
         return unicode(self.name) + unicode(' (') + unicode(self.year.organisation.name) + unicode(' - ') + unicode(self.year.name) + unicode(')')
+
+    def __str__(self):
+        return "{}/{}".format(self.name, self.year)
 
 class Income(models.Model):
     '''

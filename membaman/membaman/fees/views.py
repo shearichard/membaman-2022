@@ -11,9 +11,9 @@ from members.models import Member
 
 
 #TEMP_ORG_NAME = 'Conversion Group'
-TEMP_ORG_ID = 71 
-TEMP_CURR_YR_START = datetime.date(2015,1,1)
-TEMP_CURR_YR_FINISH = datetime.date(2015,12,31)
+TEMP_ORG_ID = 1 
+TEMP_CURR_YR_START = datetime.date(2022,1,1)
+TEMP_CURR_YR_FINISH = datetime.date(2022,12,31)
 
 class IncomeListView(ListView):
     model = Income
@@ -96,6 +96,7 @@ class IncomeListSubYearView(ListView):
         dic_out = {}
         suby_order_list = []
         mem_order_list = []
+        qs_income = Income.objects.none()
 
         qs_subyear = SubYear.objects.filter(year__organisation__pk=TEMP_ORG_ID, start__gte=TEMP_CURR_YR_START, end__lte=TEMP_CURR_YR_FINISH).order_by('start')
         qs_mem = Member.objects.filter(organisation__pk=TEMP_ORG_ID).order_by( 'name_family', 'family__id','name_given')

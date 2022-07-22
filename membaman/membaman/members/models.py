@@ -23,6 +23,10 @@ class Organisation(models.Model):
     def __unicode__(self):
         return unicode(self.name)
 
+    def __str__(self):
+        return self.name 
+
+
 class SubOrganisation(models.Model):
     '''
     A `SubOrganisation` is grouping within an

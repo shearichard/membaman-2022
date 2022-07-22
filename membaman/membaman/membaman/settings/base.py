@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 
 from os.path import join, normpath, dirname, basename, abspath
+from distutils.sysconfig import get_python_lib
 from pathlib import Path
 import environ
 
@@ -55,6 +56,7 @@ LOCAL_APPS = (
 )
 #
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+print("INSTALLED_APPS = {}".format(INSTALLED_APPS))
 #####################################################################
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,10 +70,17 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'membaman.urls'
 
+#
+#A side effect of upgrading from Django 2.x to 3.x was that the admin templates was no longer visible
+#to Django. I think this was something I stuffed up but initially I've addressed this by finding where
+#the admin templates are and adding them to the TEMPLATES.DIRS. I've based this approach on 
+#https://stackoverflow.com/a/122340
+#
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [normpath(join(BASE_DIR, '..','templates'))],
+        'DIRS': [normpath(join(BASE_DIR, '..', 'templates')), 
+                 normpath(join(get_python_lib(), 'django/contrib/admin/templates'))],
         'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
@@ -83,6 +92,8 @@ TEMPLATES = [
         },
     },
 ]
+print("TEMPLATES ...")
+print(TEMPLATES)
 
 WSGI_APPLICATION = 'membaman.wsgi.application'
 

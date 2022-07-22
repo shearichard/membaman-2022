@@ -7,6 +7,9 @@ from .models import AccountDebt
 from .models import AccountPayment
 from .models import ReferenceMapper
 
+class SubYearAdmin(admin.ModelAdmin):
+    list_display = ('name', 'year', 'start', 'end')
+
 admin.site.register(Year)
 admin.site.register(SubYear)
 admin.site.register(Income)

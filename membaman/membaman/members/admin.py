@@ -8,6 +8,9 @@ from .models import Caregiver
 from .models import Member
 
 
+class OrganisationAdmin(admin.ModelAdmin):
+    list_display = ('name', 'postal_address')
+
 admin.site.register(Organisation)
 admin.site.register(SubOrganisation)
 admin.site.register(Family)
