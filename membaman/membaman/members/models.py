@@ -21,7 +21,7 @@ class Organisation(models.Model):
 
 
     def __unicode__(self):
-        return unicode(self.name)
+        return str(self.name)
 
     def __str__(self):
         return self.name 
@@ -44,7 +44,7 @@ class SubOrganisation(models.Model):
     organisation_name.short_description = 'Organisation Name'
 
     def __unicode__(self):
-        return unicode(self.sub_name) + unicode(' (') + unicode(self.organisation.name) + unicode(')')
+        return str(self.sub_name) + str(' (') + str(self.organisation.name) + str(')')
 
     def __str__(self):
         return self.sub_name 
@@ -63,7 +63,7 @@ class Family(models.Model):
     phone_fixed = models.CharField(max_length=20)
 
     def __unicode__(self):
-        return u', '.join((unicode(self.street_address), unicode(self.suburb), unicode(self.city)))
+        return u', '.join((str(self.street_address), str(self.suburb), str(self.city)))
 
     def __str__(self):
         return self.street_address 
@@ -113,7 +113,7 @@ class Caregiver(Person):
                                     default=OTHER)
 
     def __unicode__(self):
-        return u', '.join((unicode(self.name_family), unicode(self.name_given)))
+        return u', '.join((str(self.name_family), str(self.name_given)))
 
 class Member(Person):
     '''
@@ -151,19 +151,19 @@ class Member(Person):
         '''
         Returns "Smith, John"
         '''
-        return u', '.join((unicode(self.name_family), unicode(self.name_given)))
+        return u', '.join((str(self.name_family), str(self.name_given)))
 
     def last_first_name(self):
         '''
         Returns "Smith, John"
         '''
-        return u', '.join((unicode(self.name_family), unicode(self.name_given)))
+        return u', '.join((str(self.name_family), str(self.name_given)))
 
     def first_last_name(self):
         '''
         Returns "John Smith"
         '''
-        return u' '.join((unicode(self.name_given), unicode(self.name_family)))
+        return u' '.join((str(self.name_given), str(self.name_family)))
 
     def first_last_name_memtype_desc(self):
         '''
@@ -175,11 +175,11 @@ class Member(Person):
         else:
             for mem_type_tuple in self.MEMBERSHIP_TYPE_CHOICES:
                 if mem_type_tuple[0] == self.membership_type:
-                    outfull = u"%s (%s)" % (out, unicode(mem_type_tuple[1]))
+                    outfull = u"%s (%s)" % (out, str(mem_type_tuple[1]))
                     out = outfull
                     break
         return out
 
     def primary_caregiver_email(self):
-        return unicode(self.primary_caregiver.email)
+        return str(self.primary_caregiver.email)
 
