@@ -2,7 +2,7 @@ History
 ------------
 This is an updated version of the original membaman project seen at https://github.com/shearichard/membaman . 
 
-The intention of this version is make the original project work on a more recent version of Django (3.2 initially) and Python 3.x.
+The original membaman project got stuck on Django 1.7 / Python 2.x. The intention of this version is make the functionality of the original project work on a more recent version of Django (3.2 initially) and Python 3.x.
 
 In migrating the project some parts of it are now broken and so this is work in progress to bring this version back up to the standard of the previous version.
 
