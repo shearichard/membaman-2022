@@ -46,6 +46,9 @@ class SubOrganisation(models.Model):
     def __unicode__(self):
         return unicode(self.sub_name) + unicode(' (') + unicode(self.organisation.name) + unicode(')')
 
+    def __str__(self):
+        return self.sub_name 
+
 class Family(models.Model):
     '''
     `Family` constitutes one or more `Caregiver` and one or
@@ -62,6 +65,9 @@ class Family(models.Model):
     def __unicode__(self):
         return u', '.join((unicode(self.street_address), unicode(self.suburb), unicode(self.city)))
 
+    def __str__(self):
+        return self.street_address 
+
 class Person(models.Model):
     '''
     `Person` is an abstract Model to accomodate personal
@@ -72,6 +78,10 @@ class Person(models.Model):
 
     name_given = models.CharField('given name', max_length=50)
     name_family = models.CharField('family name', max_length=50)
+
+    def __str__(self):
+        return f'''{self.name_family} , {self.name_given}'''
+
 
 class Caregiver(Person):
     '''
