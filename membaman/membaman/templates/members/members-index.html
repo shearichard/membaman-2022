@@ -2,18 +2,15 @@
 {% load i18n %}
 
 {% block content %}
-<a href="{% url 'membamanindex' %}">Membaman Home Page</a>|
-<a href="{% url 'fees:feesindex' %}">Fees Home Page</a>|
-<a href="{% url 'members:membersindex' %}">Members Home Page</a>|
-<h2>Members Home Page</h2>
+    <h2>Members Home Page</h2>
 
-<ol>
-    <li><a href="{% url 'members:member-list' %}">Member List</a></li>
-    <li><a href="{% url 'members:member-finance-list' %}">Member Finance List</a></li>
-    <li><a href="{% url 'members:member-nomore-list' %}">Previously Members but now left</a></li>
-    <li><a href="{% url 'members:member-family-finance-list' %}">Financial Details by Family </a></li>
-    <li><a href="{% url 'members:member-debtors-list' %}">Debtor Details </a></li>
-    <li><a href="{% url 'membamanindex' %}">Membaman Home Page</a></li>
-</ol>
+    <ol>
+        <li><a href="{% url 'members:member-list' %}">Member List</a></li>
+        <li><a href="{% url 'members:member-finance-list' %}">Member Finance List</a></li>
+        <li><a href="{% url 'members:member-nomore-list' %}">Previously Members but now left</a></li>
+        <li><a href="{% url 'members:member-family-finance-list' %}">Financial Details by Family </a></li>
+        <li><a href="{% url 'members:member-debtors-list' %}">Debtor Details </a></li>
+        <li><a href="{% url 'membamanindex' %}">Membaman Home Page</a></li>
+    </ol>
 
 {% endblock %}

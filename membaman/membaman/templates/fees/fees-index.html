@@ -2,15 +2,11 @@
 {% load i18n %}
 
 {% block content %}
-<a href="{% url 'membamanindex' %}">Membaman Home Page</a>|
-<a href="{% url 'fees:feesindex' %}">Fees Home Page</a>|
-<a href="{% url 'members:membersindex' %}">Members Home Page</a>|
-<h2>Fees Home Page</h2>
+    <h2>Fees Home Page</h2>
 
-<ol>
-    <li><a href="{% url 'fees:income-list' %}">Income List</a></li>
-    <li><a href="{% url 'fees:income-list-subyear' %}">Income List - Subyear</a></li>
-    <li><a href="{% url 'membamanindex' %}">Membaman Home Page</a></li>
-</ol>
-
+    <ol>
+        <li><a href="{% url 'fees:income-list' %}">Income List</a></li>
+        <li><a href="{% url 'fees:income-list-subyear' %}">Income List - Subyear</a></li>
+        <li><a href="{% url 'membamanindex' %}">Membaman Home Page</a></li>
+    </ol>
 {% endblock %}
