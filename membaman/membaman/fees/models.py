@@ -19,7 +19,7 @@ class Year(models.Model):
     end = models.DateField()
 
     def __unicode__(self):
-        return unicode(self.name) + unicode(' (') + unicode(self.organisation.name) + unicode(')')
+        return str(self.name) + str(' (') + str(self.organisation.name) + str(')')
 
     def __str__(self):
         return "{} ({})".format(self.name, self.organisation.name)
@@ -56,7 +56,7 @@ class SubYear(models.Model):
     organisation_name.short_description = 'Organisation Name'
 
     def __unicode__(self):
-        return unicode(self.name) + unicode(' (') + unicode(self.year.organisation.name) + unicode(' - ') + unicode(self.year.name) + unicode(')')
+        return str(self.name) + str(' (') + str(self.year.organisation.name) + str(' - ') + str(self.year.name) + str(')')
 
     def __str__(self):
         return "{}/{}".format(self.name, self.year)
@@ -88,9 +88,9 @@ class Income(models.Model):
     subyear_name.short_description = 'Sub-Year Name'
 
     def __unicode__(self):
-        return unicode(' (') + unicode(self.subyear.year.name) + unicode(' - ') + \
-            unicode(self.subyear.name) + unicode(':') + unicode(self.member) + \
-            unicode(')') + unicode(self.received)
+        return str(' (') + str(self.subyear.year.name) + str(' - ') + \
+            str(self.subyear.name) + str(':') + str(self.member) + \
+            str(')') + str(self.received)
 
 class AccountEntry(models.Model):
     '''
@@ -152,5 +152,5 @@ class ReferenceMapper(models.Model):
     payment_origination_name = models.CharField(max_length=30)
 
     def __unicode__(self):
-        return unicode(self.payment_reference_used) + " ( Should have been : " + unicode(self.payment_reference_intended) + " )"
+        return str(self.payment_reference_used) + " ( Should have been : " + str(self.payment_reference_intended) + " )"
 
