@@ -90,7 +90,10 @@ class Income(models.Model):
     def __unicode__(self):
         return str(' (') + str(self.subyear.year.name) + str(' - ') + \
             str(self.subyear.name) + str(':') + str(self.member) + \
-            str(')') + str(self.received)
+            str(')') + " " +  str(self.received)
+
+    def __str__(self):
+        return self.__unicode__()
 
 class AccountEntry(models.Model):
     '''

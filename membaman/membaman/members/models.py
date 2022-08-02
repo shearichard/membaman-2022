@@ -24,7 +24,7 @@ class Organisation(models.Model):
         return str(self.name)
 
     def __str__(self):
-        return self.name 
+        return str(self.name) 
 
 
 class SubOrganisation(models.Model):
@@ -115,6 +115,9 @@ class Caregiver(Person):
     def __unicode__(self):
         return u', '.join((str(self.name_family), str(self.name_given)))
 
+    def __str__(self):
+        return u', '.join((str(self.name_family), str(self.name_given)))
+
 class Member(Person):
     '''
     `Member` is a `Person` who directly participates in an `Organisation`
@@ -152,6 +155,10 @@ class Member(Person):
         Returns "Smith, John"
         '''
         return u', '.join((str(self.name_family), str(self.name_given)))
+
+    def __str__(self):
+        return str(self.last_first_name()) 
+
 
     def last_first_name(self):
         '''
