@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Organisation(models.Model):
     '''
     An `Organisation` is an entity to which
@@ -19,12 +20,11 @@ class Organisation(models.Model):
     leader_phone = models.CharField(max_length=50, null=True, blank=True)
     leader_email = models.CharField(max_length=50, null=True, blank=True)
 
-
     def __unicode__(self):
         return str(self.name)
 
     def __str__(self):
-        return str(self.name) 
+        return str(self.name)
 
 
 class SubOrganisation(models.Model):
@@ -47,7 +47,8 @@ class SubOrganisation(models.Model):
         return str(self.sub_name) + str(' (') + str(self.organisation.name) + str(')')
 
     def __str__(self):
-        return self.sub_name 
+        return self.sub_name
+
 
 class Family(models.Model):
     '''
@@ -66,7 +67,8 @@ class Family(models.Model):
         return u', '.join((str(self.street_address), str(self.suburb), str(self.city)))
 
     def __str__(self):
-        return self.street_address 
+        return self.street_address
+
 
 class Person(models.Model):
     '''
@@ -118,6 +120,7 @@ class Caregiver(Person):
     def __str__(self):
         return u', '.join((str(self.name_family), str(self.name_given)))
 
+
 class Member(Person):
     '''
     `Member` is a `Person` who directly participates in an `Organisation`
@@ -157,8 +160,7 @@ class Member(Person):
         return u', '.join((str(self.name_family), str(self.name_given)))
 
     def __str__(self):
-        return str(self.last_first_name()) 
-
+        return str(self.last_first_name())
 
     def last_first_name(self):
         '''
@@ -189,4 +191,3 @@ class Member(Person):
 
     def primary_caregiver_email(self):
         return str(self.primary_caregiver.email)
-

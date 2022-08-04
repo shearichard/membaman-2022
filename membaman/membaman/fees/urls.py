@@ -1,5 +1,4 @@
-from django.conf.urls import include, re_path
-from django.contrib import admin
+from django.conf.urls import re_path
 from django.views.generic.base import TemplateView
 
 from . import views

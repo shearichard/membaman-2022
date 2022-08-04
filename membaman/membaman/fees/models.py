@@ -3,7 +3,7 @@ from django.db import models
 from members.models import Organisation
 from members.models import Member
 
-# Create your models here.
+
 class Year(models.Model):
     '''
     A `Year` models a single year
@@ -61,6 +61,7 @@ class SubYear(models.Model):
     def __str__(self):
         return "{}/{}".format(self.name, self.year)
 
+
 class Income(models.Model):
     '''
     `Income` represents the income from a `Member`
@@ -90,15 +91,16 @@ class Income(models.Model):
     def __unicode__(self):
         return str(' (') + str(self.subyear.year.name) + str(' - ') + \
             str(self.subyear.name) + str(':') + str(self.member) + \
-            str(')') + " " +  str(self.received)
+            str(')') + " " + str(self.received)
 
     def __str__(self):
         return self.__unicode__()
 
+
 class AccountEntry(models.Model):
     '''
     `AccountEntry` represents either a debt or a
-    credit. We record membership payments which 
+    credit. We record membership payments which
     have been asked for via `AccountEntry` and we
     record amounts received via `AccountEntry`
 
@@ -114,8 +116,10 @@ class AccountEntry(models.Model):
     amount = models.DecimalField(max_digits=5, decimal_places=2)
     date = models.DateField()
 
+
 class AccountDebt(AccountEntry):
     invoice_reference = models.CharField(max_length=10)
+
 
 class AccountPayment(AccountEntry):
 
@@ -141,11 +145,12 @@ class AccountPayment(AccountEntry):
     description = models.CharField(max_length=128, null=True, blank=True)
     notes = models.CharField(max_length=128, null=True, blank=True)
 
+
 class ReferenceMapper(models.Model):
     '''
     Where Payments have been made with the 'wrong' reference
     (that is one which does not exist in an `AccountDebt` model
-    instance the `ReferenceMapper` object is used to map the 
+    instance the `ReferenceMapper` object is used to map the
     reference that was used to the reference that should have been
     used
     '''
@@ -156,4 +161,3 @@ class ReferenceMapper(models.Model):
 
     def __unicode__(self):
         return str(self.payment_reference_used) + " ( Should have been : " + str(self.payment_reference_intended) + " )"
-

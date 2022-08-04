@@ -1,7 +1,4 @@
-from os.path import abspath, basename, dirname, join, normpath
-from sys import path
-
-from .base import *
+from .base import * 
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG

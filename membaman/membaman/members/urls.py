@@ -1,5 +1,4 @@
-from django.conf.urls import include, re_path
-from django.contrib import admin
+from django.conf.urls import re_path
 from django.views.generic.base import TemplateView
 
 from . import views
@@ -11,7 +10,7 @@ urlpatterns = patterns('',
 '''
 app_name = 'members'
 
-urlpatterns = [ 
+urlpatterns = [
     re_path(r'^$', TemplateView.as_view(template_name='members/members-index.html'), name='membersindex'),
     re_path(r'^member-list/', views.MemberActiveListView.as_view(), name='member-list'),
     re_path(r'^member-nomore-list/', views.MemberNotActiveListView.as_view(), name='member-nomore-list'),

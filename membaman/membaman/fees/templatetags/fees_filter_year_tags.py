@@ -1,14 +1,16 @@
-from ..models import Year, SubYear, Income
+from ..models import Year
 from ..views import TEMP_ORG_ID
 
 from django import template
-from django.template.loader import get_template
+
 
 register = template.Library()
+
+
 @register.simple_tag
 def income_year_select_content():
     '''
-    This function will require more work. When used in postgres the form of 
+    This function will require more work. When used in postgres the form of
     next statement was as follows ...
 
     year_list = Year.objects.filter(organisation_id=TEMP_ORG_ID).distinct('start')
