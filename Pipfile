@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "~=3.2"
 django-environ = "*"
+flake8 = "*"
 
 [dev-packages]
 
